@@ -15,9 +15,10 @@ RewriteRule (^|/)pembuat-kode [NC,F,L]
   <FilesMatch "\.(woff2|webp|png|jpg|mp4)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
-  <FilesMatch "\.(html|css)$">
+  <FilesMatch "\.(html|css|js|webmanifest)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
 </IfModule>
 AddType font/woff2 .woff2
 AddType image/webp .webp
+AddType application/manifest+json .webmanifest
