@@ -824,9 +824,10 @@ const _feed=feed;feed=function(b,a,g){const wrong=!busy&&a&&b&&!a.classList.cont
     setTimeout(()=>{h.style.opacity=0},1500);setTimeout(()=>{h.remove();armHint()},1900)},700)};
 /* grown-ups: YouTube channel + the other game, behind the same 3-number gate */
 (function(){const sh=$("mapOv").querySelector(".sheet"),d=document.createElement("div");d.className="lbpar";
-  d.innerHTML=`<span>Orang tua</span><button class="mini" id="lbYT">▶ YouTube Little Bhre</button><button class="mini" id="lbMB">🫧 Game Mandi Busa</button><button class="mini lb-install" hidden>📲 Pasang di HP</button>`;sh.appendChild(d);
+  d.innerHTML=`<span>Orang tua</span><button class="mini" id="lbYT">▶ YouTube Little Bhre</button><button class="mini" id="lbMB">🫧 Game Mandi Busa</button><button class="mini" id="lbKT">🚂 Game Kereta Tutu</button><button class="mini lb-install" hidden>📲 Pasang di HP</button>`;sh.appendChild(d);
   $("lbYT").onclick=()=>parentalGate(()=>{const w=window.open("https://www.youtube.com/@LittleBhre","_blank","noopener");if(!w)location.href="https://www.youtube.com/@LittleBhre"});
-  $("lbMB").onclick=()=>parentalGate(()=>{location.href="/mandi-busa/"})})();
+  $("lbMB").onclick=()=>parentalGate(()=>{location.href="/mandi-busa/"});
+  $("lbKT").onclick=()=>parentalGate(()=>{location.href="/kereta-tutu/"})})();
 /* Bhre & Tutu at the sides */
 const LBC={bhre:$("lbBhre"),tutu:$("lbTutu")};LBC.bhre.src=LB.img.bhre_happy;LBC.tutu.src=LB.img.tutu_happy;
 function hop(el){if(reduce||!el)return;el.classList.remove("hop");void el.offsetWidth;el.classList.add("hop")}
