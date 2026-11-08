@@ -528,7 +528,7 @@ function openPaywall(wi,then){
   parentalGate(()=>{
     const w=WORLDS[wi],single=Object.entries(STORE.products).find(([,p])=>p.worlds.length===1&&p.worlds[0]===wi);
     $("payArt").innerHTML=img(w.icon);$("payTitle").textContent="Buka "+w.name;
-    $("perks").innerHTML=[[w.icon,w.desc+": 8 level"],["2764","Sekali bayar. Tanpa iklan, tanpa mengumpulkan data"]].map(([c,t])=>`<li>${img(c)}<span>${t}</span></li>`).join("");
+    $("perks").innerHTML=[[w.icon,w.desc+": 8 level"],["2764","Sekali bayar. Tanpa iklan, tanpa mengumpulkan data, bisa dimainkan tanpa internet"]].map(([c,t])=>`<li>${img(c)}<span>${t}</span></li>`).join("");
     const opts=[single,Object.entries(STORE.products).find(([,p])=>p.best)].filter(Boolean).filter(([,p])=>p.worlds.every(x=>!OWNED.includes(x)));
     $("buyOpts").innerHTML=opts.map(([id,p])=>`<button class="opt${p.best?" best":""}" data-id="${id}"><span><b>${p.label}</b>${p.best?"<small>Taman Pesta + Hutan Malam, paling hemat</small>":"<small>Dunia ini saja</small>"}</span><em>${p.price}</em></button>`).join("");
     const done=()=>{$("payOv").hidden=true;SFX.win();burst(innerWidth/2,innerHeight/3,90,"confetti");then&&then()};
