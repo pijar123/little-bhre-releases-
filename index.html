@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Little Bhre: kartun tanpa dialog dan game anak 2–5 tahun</title>
+<meta name="description" content="Dibuat ayah dan ibu untuk Bhre, dibagikan untuk anakmu. Animasi tanpa dialog dan game Pesta Makan tanpa iklan untuk anak 2–5 tahun.">
+<link rel="canonical" href="https://littlebhre.com/">
+<meta property="og:title" content="Little Bhre">
+<meta property="og:description" content="Dibuat ayah dan ibu untuk Bhre. Dibagikan untuk anakmu.">
+<meta property="og:image" content="https://littlebhre.com/assets/og.jpg">
+<meta property="og:url" content="https://littlebhre.com/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFF6E2">
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/img/78f86405.webp" as="image" media="(min-width:641px)">
+<link rel="preload" href="/assets/img/39d2de30.webp" as="image" media="(max-width:640px)">
+<style>
+@font-face{font-family:Poppins;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Poppins;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:600;font-display:swap;src:url(/assets/fonts/nunito-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:700;font-display:swap;src:url(/assets/fonts/nunito-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:800;font-display:swap;src:url(/assets/fonts/nunito-latin-800-normal.woff2) format("woff2")}
+</style>
+<style>
+/* Layout: a storybook — the yard key visual opens the book, then each section is a page with a hand-cut sticker heading; single warm daytime theme by choice (the channel's own look). */
+:root{
+  --paper:#FFF6E2; --page:#FFFBF2; --sun:#F6A23C; --sun-deep:#E8692E; --ink:#2A1A12; --ink-soft:#6B4A36;
+  --grass:#8FCB63; --grass-deep:#2E7D3E; --lime:#D4DD1E; --navy:#3D5A8C; --blush:#EE7F6E; --sky:#BFE6FA;
+  --display:"Poppins","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Trebuchet MS",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font:600 17px/1.6 var(--body);
+  background-image:radial-gradient(#e9d9b6 1px,transparent 1.2px);background-size:18px 18px}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:3px solid var(--navy);outline-offset:3px;border-radius:6px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:3px solid var(--ink)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-block:8px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.25rem var(--display);color:var(--sun-deep);
+  -webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill;white-space:nowrap}
+.brand img{width:44px;height:44px;border-radius:12px;border:3px solid var(--ink)}
+nav{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav a{font:800 .95rem var(--body);text-decoration:none;padding:8px 12px;border-radius:999px;white-space:nowrap}
+nav a:hover{background:#FFE7A8}
+@media (max-width:640px){nav a.hide-s{display:none}.brand span{display:none}}
+
+/* hero: the yard, two doors */
+.hero{position:relative;border-bottom:3px solid var(--ink);background:var(--grass)}
+.hero picture,.hero img{width:100%;height:auto}
+.door{position:absolute;transform:translate(-50%,-50%) rotate(var(--r,-4deg));display:inline-flex;align-items:center;gap:8px;
+  font:800 clamp(1rem,2.4vw,1.6rem) var(--display);text-decoration:none;color:var(--ink);background:var(--page);
+  border:3px solid var(--ink);border-radius:14px;padding:.35em .8em;box-shadow:0 0 0 5px #fff,0 8px 0 5px rgba(122,58,16,.35);
+  transition:transform .15s}
+.door:hover{transform:translate(-50%,-55%) rotate(var(--r,-4deg)) scale(1.06)}
+.door .ic{width:1.3em;height:1.3em;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.7em}
+.door.watch{left:19.6%;top:52%;--r:-5deg}.door.watch .ic{background:#E5484D}
+.door.play{left:53.6%;top:74%;--r:4deg}.door.play .ic{background:var(--grass-deep)}
+@media (max-width:640px){.door.watch{left:22%;top:50%}.door.play{left:56%;top:76%}}
+.tagline{background:var(--sun);border-bottom:3px solid var(--ink);
+  background-image:repeating-conic-gradient(from 0deg at 50% 120%,#FFE7A855 0deg 7deg,transparent 7deg 15deg)}
+.tagline .wrap{padding-block:22px;text-align:center}
+.tagline p{margin:0;font:800 clamp(1.25rem,3.6vw,2rem)/1.25 var(--display);text-wrap:balance}
+.tagline p span{display:block;color:var(--page);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill}
+
+/* pages */
+section{padding-block:56px 40px}
+.sticker-h{display:inline-block;margin:0 0 20px;font:800 clamp(1.5rem,4vw,2.2rem)/1.1 var(--display);background:var(--page);
+  border:3px solid var(--ink);border-radius:10px;padding:.2em .6em;transform:rotate(-2deg);box-shadow:0 0 0 5px #fff,0 6px 0 5px rgba(122,58,16,.25)}
+.sticker-h.alt{transform:rotate(1.5deg)}
+.lead{max-width:62ch;margin:0 0 24px;color:var(--ink-soft);font-size:1.05rem}
+
+/* story */
+.story{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.story-text p{margin:0 0 14px;max-width:58ch}
+.sig{font:800 1.1rem var(--display);color:var(--sun-deep)}
+.story-art{display:flex;align-items:flex-end;justify-content:center;gap:8px;background:var(--sky);border:3px solid var(--ink);border-radius:20px;
+  padding:24px 16px 0;background-image:linear-gradient(transparent 72%,var(--grass) 72%)}
+.story-art img{width:46%}
+@media (max-width:760px){.story{grid-template-columns:1fr}}
+
+/* watch */
+.eps{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.ep{background:var(--page);border:3px solid var(--ink);border-radius:16px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .15s}
+.ep:hover{transform:translateY(-4px) rotate(-.6deg)}
+.ep img{aspect-ratio:16/9;width:100%;object-fit:cover;border-bottom:3px solid var(--ink)}
+.ep div{padding:10px 14px 14px;display:flex;flex-direction:column;gap:2px}
+.ep small{font:800 .78rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--sun-deep)}
+.ep b{font:700 1.02rem/1.3 var(--display)}
+.ep span{font-size:.92rem;color:var(--ink-soft)}
+.more{display:inline-flex;margin-top:20px;font:800 1rem var(--body);background:#E5484D;color:#fff;border:3px solid var(--ink);border-radius:999px;padding:10px 20px;text-decoration:none}
+
+/* play */
+.game{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:center;background:var(--page);border:3px solid var(--ink);
+  border-radius:24px;padding:24px;box-shadow:0 10px 0 rgba(122,58,16,.18)}
+.game-art{position:relative;background:var(--sun);border:3px solid var(--ink);border-radius:18px;padding:18px 18px 10px;
+  background-image:repeating-conic-gradient(from 0deg at 50% 45%,#FFE7A8aa 0deg 7deg,transparent 7deg 15deg);display:flex;flex-direction:column;align-items:center}
+.game-art .hd{width:62%}
+.game-art .tt{width:88%;margin-top:-10%}
+.worlds{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
+.worlds li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:baseline;padding:10px 14px;border-radius:12px;background:var(--paper)}
+.worlds b{font:700 1.02rem var(--display)}
+.worlds em{font-style:normal;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.worlds li.free em{color:var(--grass-deep)}
+.worlds li.best{background:#FFE3E8}
+.worlds span{grid-column:1/-1;font-size:.92rem;color:var(--ink-soft)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font:800 1.05rem var(--body);text-decoration:none;border:3px solid var(--ink);border-radius:999px;padding:11px 22px;display:inline-flex}
+.btn.go{background:var(--grass-deep);color:#fff;box-shadow:0 5px 0 var(--ink)}
+.btn.ghost{background:var(--page)}
+@media (max-width:760px){.game{grid-template-columns:1fr}}
+
+/* promise */
+.promises{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pr{padding:18px;border-top:6px solid var(--c);background:var(--page);border-radius:4px 4px 16px 16px}
+.pr b{display:block;font:700 1.1rem var(--display);margin-bottom:4px}
+.pr p{margin:0;font-size:.95rem;color:var(--ink-soft)}
+@media (max-width:860px){.promises{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.promises{grid-template-columns:1fr}}
+
+/* meet */
+.meet{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.who{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center;background:var(--page);border:3px solid var(--ink);border-radius:20px;padding:16px}
+.who img{width:100%}
+.who h3{margin:0 0 6px;font:800 1.5rem var(--display)}
+.who ul{margin:0;padding-left:1.1em;color:var(--ink-soft);font-size:.95rem}
+@media (max-width:760px){.meet{grid-template-columns:1fr}}
+@media (max-width:420px){.who{grid-template-columns:96px 1fr}}
+
+/* parents */
+.parents{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:10px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start}
+.steps li::before{content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--sun);border:3px solid var(--ink);display:grid;place-items:center;font:800 1rem var(--display)}
+details{background:var(--page);border:3px solid var(--ink);border-radius:14px;padding:12px 16px;margin-bottom:10px}
+summary{font:800 1rem var(--body);cursor:pointer}
+details p{margin:8px 0 0;color:var(--ink-soft);font-size:.95rem}
+@media (max-width:760px){.parents{grid-template-columns:1fr}}
+h3.sub{font:800 1.2rem var(--display);margin:0 0 12px}
+
+/* footer */
+footer{background:var(--ink);color:var(--paper);margin-top:40px}
+footer .wrap{padding-block:32px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}
+footer .wa{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+footer .num{font:800 1.2rem var(--display);user-select:all;letter-spacing:.02em}
+footer button{font:800 .9rem var(--body);background:var(--lime);color:var(--ink);border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+footer .links{display:flex;gap:16px;flex-wrap:wrap}
+footer .links a{color:var(--paper);font-weight:800}
+footer small{display:block;width:100%;opacity:.7}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="/assets/img/2ba842e4.webp" alt=""><span>Little Bhre</span></a>
+    <nav aria-label="Menu">
+      <a href="#tonton">Tonton</a>
+      <a href="#main">Main</a>
+      <a class="hide-s" href="#tentang">Tentang</a>
+      <a href="#orang-tua">Orang tua</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <picture>
+      <source media="(max-width:640px)" srcset="/assets/img/39d2de30.webp">
+      <img src="/assets/img/78f86405.webp" alt="Pagi di halaman rumah Bhre: Bhre melambai, Tutu si bayi gajah menyemprotkan air, TV kecil di bangku, tikar piknik penuh makanan, kereta mainan di rel, dan pesawat mainan di langit." width="1600" height="900">
+    </picture>
+    <a class="door watch" href="#tonton"><span class="ic">▶</span>Tonton</a>
+    <a class="door play" href="#main"><span class="ic">●</span>Main</a>
+  </div>
+
+  <div class="tagline"><div class="wrap"><p>Dibuat ayah dan ibu untuk Bhre. <span>Dibagikan untuk anakmu.</span></p></div></div>
+
+  <section id="tentang"><div class="wrap story">
+    <div class="story-text">
+      <h2 class="sticker-h">Cerita kami</h2>
+      <p>Bhre berumur 2 tahun 8 bulan. Dia suka menonton dan bermain, seperti anak seusianya.</p>
+      <p>Kami ingin tontonan dan game terbaik untuknya: yang mengajarkan sesuatu, aman diikuti, dan tanpa iklan. Jadi kami membuatnya sendiri.</p>
+      <p>Lahirlah serial animasi Little Bhre dan game anak yang ramah untuk usia dini. Setiap karya kami tunjukkan dulu ke Bhre. Kalau dia langsung paham dan tertawa, baru kami bagikan.</p>
+      <p class="sig">Ayah &amp; Ibu Bhre</p>
+    </div>
+    <div class="story-art"><img src="/assets/img/f233f52d.webp" alt="Bhre melambai"><img src="/assets/img/1e8a3838.webp" alt="Tutu si bayi gajah"></div>
+  </div></section>
+
+  <section id="tonton"><div class="wrap">
+    <h2 class="sticker-h alt">Tonton</h2>
+    <p class="lead">Animasi tanpa dialog, jadi anak bisa menikmatinya tanpa harus bisa membaca. Episode baru tayang setiap minggu di YouTube.</p>
+    <div class="eps">
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/b482a9e2.webp" alt="" loading="lazy"><div><small>Episode 1</small><b>The Runaway Train</b><span>Kereta mainan Bhre melaju sendiri</span></div></a>
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/e66107a1.webp" alt="" loading="lazy"><div><small>Episode 2</small><b>The Plane in the Tree</b><span>Pesawat mainan tersangkut di pohon</span></div></a>
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/efaaf695.webp" alt="" loading="lazy"><div><small>Episode 3</small><b>Hide and Seek with Tutu</b><span>Petak umpet bersama Tutu</span></div></a>
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/8c132d86.webp" alt="" loading="lazy"><div><small>Episode 4</small><b>Bubble Bath with Tutu</b><span>Mandi busa bersama Tutu</span></div></a>
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/aa421051.webp" alt="" loading="lazy"><div><small>Episode 5</small><b>Tutu Tries On Shoes</b><span>Tutu mencoba sepatu</span></div></a>
+    </div>
+    <a class="more" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener">Buka channel Little Bhre di YouTube</a>
+  </div></section>
+
+  <section id="main"><div class="wrap">
+    <h2 class="sticker-h">Main</h2>
+    <p class="lead">Game anak tanpa iklan, tanpa batas waktu, dan tanpa kata "kalah". Dimainkan langsung di browser, bisa dipasang di layar utama HP.</p>
+    <div class="game">
+      <div class="game-art"><img class="hd" src="/assets/img/6e64c2ef.webp" alt="Bhre bertopi pesta tertawa"><img class="tt" src="/assets/img/75345f1c.webp" alt="Pesta Makan!"></div>
+      <div>
+        <p style="margin:0 0 14px">Seret makanan ke hewan yang memakannya. Ada 24 level, suara hewan asli, dan suara Bhre sendiri.</p>
+        <ul class="worlds">
+          <li class="free"><b>Kebun Pagi</b><em>Gratis</em><span>8 level, 2 sampai 4 hewan</span></li>
+          <li><b>Taman Pesta</b><em>Rp20.000</em><span>Senja dan topi pesta, tiap hewan mau dua makanan</span></li>
+          <li><b>Hutan Malam</b><em>Rp30.000</em><span>Tebak hewan dari bayangan dan suaranya</span></li>
+          <li class="best"><b>Taman Pesta + Hutan Malam</b><em>Rp25.000</em><span>Paling hemat, sekali bayar</span></li>
+        </ul>
+        <div class="btns">
+          <a class="btn go" href="/pesta-makan/">Coba gratis</a>
+          <a class="btn ghost" href="#orang-tua">Cara beli</a>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="janji"><div class="wrap">
+    <h2 class="sticker-h alt">Janji kami untuk orang tua</h2>
+    <div class="promises">
+      <div class="pr" style="--c:#E5484D"><b>Tanpa iklan</b><p>Tidak ada iklan di game, dan channel ditandai untuk anak.</p></div>
+      <div class="pr" style="--c:var(--sun)"><b>Tanpa data anak</b><p>Tanpa akun dan tanpa pelacak. Progres hanya tersimpan di HP.</p></div>
+      <div class="pr" style="--c:var(--grass-deep)"><b>Untuk usia 2–5</b><p>Tanpa dialog, durasi pendek, tidak ada yang kalah.</p></div>
+      <div class="pr" style="--c:var(--navy)"><b>Dites ke Bhre dulu</b><p>Kalau Bhre langsung paham, baru kami rilis.</p></div>
+    </div>
+  </div></section>
+
+  <section id="kenalan"><div class="wrap">
+    <h2 class="sticker-h">Kenalan, yuk</h2>
+    <div class="meet">
+      <div class="who"><img src="/assets/img/f233f52d.webp" alt=""><div><h3>Bhre</h3><ul><li>2 tahun 8 bulan</li><li>Rambut ikal yang selalu mengembang</li><li>Suka kereta dan pesawat mainan</li></ul></div></div>
+      <div class="who"><img src="/assets/img/1e8a3838.webp" alt=""><div><h3>Tutu</h3><ul><li>Bayi gajah sahabat Bhre</li><li>Namanya dipilih sendiri oleh Bhre</li><li>Suka menyemprotkan air dari belalainya</li></ul></div></div>
+    </div>
+  </div></section>
+
+  <section id="orang-tua"><div class="wrap">
+    <h2 class="sticker-h alt">Untuk orang tua</h2>
+    <div class="parents">
+      <div>
+        <h3 class="sub">Cara membeli dunia baru</h3>
+        <ol class="steps">
+          <li>Mainkan Kebun Pagi gratis sampai anak suka.</li>
+          <li>Ketuk dunia yang terkunci, jawab soal khusus orang dewasa, lalu pilih paket.</li>
+          <li>Bayar lewat QRIS, lalu tekan Kirim ke WhatsApp dan lampirkan bukti bayar.</li>
+          <li>Kami membalas dengan kode unlock.</li>
+          <li>Salin balasan kami, tempel di game, dan dunianya langsung terbuka.</li>
+        </ol>
+      </div>
+      <div>
+        <h3 class="sub">Pertanyaan yang sering muncul</h3>
+        <details><summary>Bagaimana memasang game di layar utama HP?</summary><p>Buka game di browser, lalu pilih "Tambahkan ke layar utama" dari menu browser. Ikon Pesta Makan akan muncul seperti aplikasi.</p></details>
+        <details><summary>Saya ganti HP atau menghapus data browser</summary><p>Kode unlock terikat ke HP. Kirim bukti bayar lama ke WhatsApp kami, dan kami buatkan kode baru tanpa biaya.</p></details>
+        <details><summary>Data apa yang dikumpulkan?</summary><p>Tidak ada. Game tidak memakai akun, iklan, atau pelacak. Pembayaran lewat QRIS dan percakapan WhatsApp hanya untuk mengirim kode.</p></details>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="wa"><span>WhatsApp</span><span class="num" id="wa">0815-9528-958</span><button id="copyWa" type="button">Salin nomor</button></div>
+  <div class="links"><a href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener">YouTube</a><a href="#orang-tua">Cara beli</a><a href="/privasi/">Kebijakan privasi</a></div>
+  <small>© 2026 Little Bhre. Dibuat dengan sayang di rumah Bhre.</small>
+</div></footer>
+
+<script>
+document.getElementById("copyWa").addEventListener("click",async e=>{const b=e.currentTarget;
+  try{await navigator.clipboard.writeText("08159528958");b.textContent="Tersalin"}
+  catch(_){const r=document.createRange();r.selectNodeContents(document.getElementById("wa"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Nomor terpilih"}
+  setTimeout(()=>b.textContent="Salin nomor",1600)});
+</script>
+
+</body></html>
