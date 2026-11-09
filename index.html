@@ -189,7 +189,7 @@ footer small{display:block;width:100%;opacity:.7}
   <section id="tentang"><div class="wrap story">
     <div class="story-text">
       <h2 class="sticker-h">Cerita kami</h2>
-      <p>Bhre berumur 2 tahun 8 bulan. Dia suka menonton dan bermain, seperti anak seusianya.</p>
+      <p>Bhre berumur <span class="age" data-born="2024-04-19">2 tahun 6 bulan</span>. Dia suka menonton dan bermain, seperti anak seusianya.</p>
       <p>Kami ingin tontonan dan game terbaik untuknya: yang mengajarkan sesuatu, aman diikuti, dan tanpa iklan. Jadi kami membuatnya sendiri.</p>
       <p>Lahirlah serial animasi Little Bhre dan game anak yang ramah untuk usia dini. Setiap karya kami tunjukkan dulu ke Bhre. Kalau dia langsung paham dan tertawa, baru kami bagikan.</p>
       <p class="sig">Ayah &amp; Ibu Bhre</p>
@@ -276,9 +276,9 @@ footer small{display:block;width:100%;opacity:.7}
   <section id="kenalan"><div class="wrap">
     <h2 class="sticker-h">Kenalan, yuk</h2>
     <div class="meet">
-      <div class="who"><img src="/assets/img/f233f52d.webp" alt=""><div><h3>Bhre</h3><ul><li>2 tahun 8 bulan</li><li>Rambut ikal yang selalu mengembang</li><li>Suka kereta dan pesawat mainan</li></ul></div></div>
+      <div class="who"><img src="/assets/img/f233f52d.webp" alt=""><div><h3>Bhre</h3><ul><li><span class="age" data-born="2024-04-19">2 tahun 6 bulan</span></li><li>Rambut ikal yang selalu mengembang</li><li>Suka kereta dan pesawat mainan</li></ul></div></div>
       <div class="who"><img src="/assets/img/1e8a3838.webp" alt=""><div><h3>Tutu</h3><ul><li>Bayi gajah sahabat Bhre</li><li>Namanya dipilih sendiri oleh Bhre</li><li>Suka menyemprotkan air dari belalainya</li></ul></div></div>
-      <div class="who"><img src="/assets/img/trah.webp" alt="Trah, adik Bhre, melambai"><div><h3>Trah</h3><ul><li>Adik Bhre, sekitar 1 tahun</li><li>Rambut tipis dengan satu ikal kecil, mirip kakaknya</li><li>Bisa ditemui di video Baby Sensory</li></ul></div></div>
+      <div class="who"><img src="/assets/img/trah.webp" alt="Trah, adik Bhre, melambai"><div><h3>Trah</h3><ul><li>Adik Bhre, <span class="age" data-born="2026-04-15">6 bulan</span></li><li>Rambut tipis dengan satu ikal kecil, mirip kakaknya</li><li>Bisa ditemui di video Baby Sensory</li></ul></div></div>
     </div>
   </div></section>
 
@@ -318,4 +318,9 @@ document.getElementById("copyWa").addEventListener("click",async e=>{const b=e.c
   setTimeout(()=>b.textContent="Salin nomor",1600)});
 </script>
 
+<script>
+document.querySelectorAll(".age[data-born]").forEach(e=>{const b=new Date(e.dataset.born+"T00:00:00"),n=new Date();
+  let m=(n.getFullYear()-b.getFullYear())*12+n.getMonth()-b.getMonth();if(n.getDate()<b.getDate())m--;
+  const y=Math.floor(m/12),r=m%12;e.textContent=(y?y+" tahun":"")+(y&&r?" ":"")+(r||!y?r+" bulan":"")});
+</script>
 </body></html>
