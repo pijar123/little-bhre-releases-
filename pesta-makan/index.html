@@ -275,6 +275,8 @@ body.night .lbc{filter:brightness(.78) saturate(.9)}
 .friend.plane{width:min(30vw,170px);top:calc(env(safe-area-inset-top,0px) + 70px);left:-40vw}
 .friend.bird{width:52px;padding:14px;margin:-14px}
 body.night .friend{display:none}
+.lb-bar{z-index:41!important}
+body:has(#gateOv:not([hidden])) .lb-bar,body:has(#payOv:not([hidden])) .lb-bar,body:has(#endOv:not([hidden])) .lb-bar{display:none!important}
 .animal .think.want{background:#FFF0C2;transform:scale(1.35);animation:no .45s}
 .lbpar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;border-top:2px dashed rgba(59,36,24,.3);padding-top:10px;width:100%}
 .lbpar span{font:800 .8rem var(--body);color:var(--muted);width:100%}
@@ -740,16 +742,62 @@ $("soundBtn").onclick=()=>{soundOn=!soundOn;$("waves").style.display=soundOn?"":
   if(!soundOn)try{speechSynthesis.cancel()}catch(e){}else SFX.pop()};
 </script>
 <!--LB-V2--><script>
-/* installable game (Android Chrome "Install app"): offline service worker + install prompt. Buttons with class lb-install show when possible. */
+/* installable game: offline service worker + an install strip for parents (shown on title/menu screens via body.inmenu).
+   Android Chrome: real install prompt. iPhone: Share -> Add to Home Screen guide. WhatsApp/Instagram/Facebook in-app browser:
+   "open in Chrome" guide + copy link. Hidden when the game already runs installed. */
 (function () {
   if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
-  let ev = null; const btns = () => document.querySelectorAll(".lb-install");
-  const show = (on) => btns().forEach((b) => (b.hidden = !on));
-  addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); ev = e; show(true); });
-  addEventListener("appinstalled", () => { ev = null; show(false); });
+  const ua = navigator.userAgent || "", standalone = matchMedia("(display-mode: standalone)").matches || matchMedia("(display-mode: fullscreen)").matches || navigator.standalone === true;
+  const ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1), inapp = /FBAN|FBAV|Instagram|WhatsApp|Line\/|; wv\)|TikTok/i.test(ua);
+  let ev = null;
+  addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); ev = e; });
+  addEventListener("appinstalled", () => { ev = null; document.body.classList.add("lb-installed"); });
   window.lbCanInstall = () => !!ev;
-  window.lbInstall = async () => { if (!ev) return; ev.prompt(); try { await ev.userChoice; } catch (e) {} ev = null; show(false); };
-  document.addEventListener("click", (e) => { const b = e.target.closest && e.target.closest(".lb-install"); if (b) { e.stopPropagation(); window.lbInstall(); } }, true);
+  const css = document.createElement("style");
+  css.textContent = `.lb-bar{position:fixed;z-index:8;left:50%;bottom:max(10px,env(safe-area-inset-bottom));transform:translateX(-50%);display:none;align-items:center;gap:10px;
+    background:#FFF8EC;border:3px solid #3B2418;border-radius:999px;box-shadow:0 4px 0 #3B2418;padding:6px 6px 6px 14px;font:800 14px Nunito,system-ui,sans-serif;color:#3B2418;white-space:nowrap;max-width:94vw}
+  body.inmenu:not(.lb-installed):not(.lb-hidebar) .lb-bar{display:flex}
+  body:has(.ov) .lb-bar,body:has(.lb-guide) .lb-bar{display:none!important}
+  .lb-bar small{font-weight:700;opacity:.75}.lb-bar button{position:static;width:auto;height:auto;border:2px solid #3B2418;border-radius:999px;font:800 14px Nunito,system-ui,sans-serif;padding:7px 14px;cursor:pointer}
+  .lb-bar .lb-go{background:#6FBF4E;color:#fff}.lb-bar .lb-x{background:#fff;color:#3B2418;padding:7px 10px}
+  @media (max-width:420px){.lb-bar small{display:none}}
+  .lb-guide{position:fixed;inset:0;z-index:30;background:rgba(43,30,58,.6);display:flex;align-items:center;justify-content:center;padding:14px;font:15px/1.4 Nunito,system-ui,sans-serif;color:#3B2418}
+  .lb-guide .c{background:#FFF8EC;border:4px solid #3B2418;border-radius:24px;padding:18px 20px;max-width:380px;text-align:left}
+  .lb-guide h3{font:400 24px 'Lilita One',sans-serif;color:#E8692E;margin:0 0 8px;text-align:center}.lb-guide ol{padding-left:22px;margin:6px 0}.lb-guide li{margin:6px 0}
+  .lb-guide .k{display:inline-block;border:2px solid #3B2418;border-radius:8px;padding:0 6px;background:#fff;font-weight:800}
+  .lb-guide button{display:block;width:100%;margin-top:10px;border:3px solid #3B2418;border-radius:14px;padding:10px;font:800 16px Nunito,system-ui,sans-serif;background:#E8692E;color:#fff}
+  .lb-guide button.w{background:#fff;color:#3B2418}`;
+  document.head.appendChild(css);
+  function guide(html) {
+    const o = document.createElement("div"); o.className = "lb-guide"; o.innerHTML = `<div class="c">${html}<button class="w" data-close>Tutup</button></div>`;
+    o.addEventListener("pointerdown", (e) => e.stopPropagation()); o.addEventListener("click", (e) => { if (e.target === o || e.target.hasAttribute("data-close")) o.remove(); });
+    document.body.appendChild(o); return o;
+  }
+  async function install() {
+    if (ev) { ev.prompt(); try { const r = await ev.userChoice; if (r && r.outcome === "accepted") document.body.classList.add("lb-installed"); } catch (e) { } ev = null; return; }
+    if (inapp) {
+      const o = guide(`<h3>Buka di browser dulu</h3><p>Game ini sedang dibuka di dalam WhatsApp/Instagram, jadi belum bisa dipasang.</p><ol>
+        <li>Ketuk <span class="k">⋮</span> (atau <span class="k">•••</span>) di pojok kanan atas.</li><li>Pilih <b>Buka di Chrome</b> / <b>Buka di browser</b> (iPhone: <b>Buka di Safari</b>).</li>
+        <li>Di sana, tekan lagi <b>📲 Pasang</b>.</li></ol><button data-copy>Salin link game</button>`);
+      o.querySelector("[data-copy]").onclick = async (e) => { try { await navigator.clipboard.writeText(location.href.split("#")[0]); e.target.textContent = "Link tersalin ✓"; } catch (_) { e.target.textContent = location.href.split("#")[0]; } };
+      return;
+    }
+    if (ios) { guide(`<h3>Pasang di iPhone</h3><ol><li>Buka halaman ini di <b>Safari</b>.</li><li>Ketuk tombol <b>Bagikan</b> <span class="k">⬆︎</span> di bawah layar.</li>
+      <li>Pilih <b>Tambahkan ke Layar Utama</b>, lalu <b>Tambah</b>.</li></ol><p>Ikon game muncul seperti aplikasi dan bisa dimainkan tanpa internet.</p>`); return; }
+    guide(`<h3>Pasang di HP</h3><ol><li>Buka halaman ini di <b>Chrome</b>.</li><li>Ketuk <span class="k">⋮</span> di pojok kanan atas.</li>
+      <li>Pilih <b>Instal aplikasi</b> atau <b>Tambahkan ke layar utama</b>.</li></ol><p>Ikon game muncul seperti aplikasi dan bisa dimainkan tanpa internet.</p>`);
+  }
+  window.lbInstall = install;
+  function mount() {
+    if (standalone) { document.body.classList.add("lb-installed"); return; }
+    const b = document.createElement("div"); b.className = "lb-bar";
+    b.innerHTML = `<span>📲 Pasang di HP <small>· main tanpa internet</small></span><button class="lb-go">Pasang</button><button class="lb-x" aria-label="tutup">✕</button>`;
+    b.addEventListener("pointerdown", (e) => e.stopPropagation());
+    b.querySelector(".lb-go").onclick = (e) => { e.stopPropagation(); install(); };
+    b.querySelector(".lb-x").onclick = (e) => { e.stopPropagation(); document.body.classList.add("lb-hidebar"); };
+    document.body.appendChild(b);
+  }
+  if (document.body) mount(); else addEventListener("DOMContentLoaded", mount);
 })();
 
 /* Little Bhre licences (all games): an unlock code is an Ed25519 signature by the Code Maker's PRIVATE key over
@@ -805,8 +853,8 @@ function duck(){try{if(!musG)return;const t=ac.currentTime;musG.gain.cancelSched
 const _cry=cry;cry=function(a){_cry(a);duck()};
 function stopMusic(){try{if(musG)musG.gain.setTargetAtTime(0,ac.currentTime,.25);const m=mus;setTimeout(()=>{try{m&&m.stop()}catch(e){}},900)}catch(e){}mus=null;musK=""}
 const worldMusic=()=>W().mode==="night"?"music_night":W().mode==="two"?"music_dusk":"music_day";
-const _enter=enterWorld;enterWorld=function(){_enter();music(worldMusic())};
-const _map=showMap;showMap=function(){_map();music("music_day")};
+const _enter=enterWorld;enterWorld=function(){document.body.classList.remove("inmenu");_enter();music(worldMusic())};
+const _map=showMap;showMap=function(){_map();document.body.classList.add("inmenu");music("music_day")};
 const _ld=levelDone;levelDone=function(){_ld();setTimeout(()=>{const c=center($("animals"));ono(c.x,c.y-40,"YAY!","#FFD43B",-4);
   LBC.bhre.src=LB.img.bhre_laugh;hop(LBC.bhre);hop(LBC.tutu);blip(Math.random()<.5?"bhre_laugh":"bhre_yeay",.9,.15);blip("tutu_laugh",.6,.5);
   setTimeout(()=>LBC.bhre.src=LB.img.bhre_happy,2200)},1700)};
@@ -824,7 +872,7 @@ const _feed=feed;feed=function(b,a,g){const wrong=!busy&&a&&b&&!a.classList.cont
     setTimeout(()=>{h.style.opacity=0},1500);setTimeout(()=>{h.remove();armHint()},1900)},700)};
 /* grown-ups: YouTube channel + the other game, behind the same 3-number gate */
 (function(){const sh=$("mapOv").querySelector(".sheet"),d=document.createElement("div");d.className="lbpar";
-  d.innerHTML=`<span>Orang tua</span><button class="mini" id="lbYT">▶ YouTube Little Bhre</button><button class="mini" id="lbMB">🫧 Game Mandi Busa</button><button class="mini" id="lbKT">🚂 Game Kereta Tutu</button><button class="mini" id="lbPB">✈️ Game Pesawat Bhre</button><button class="mini lb-install" hidden>📲 Pasang di HP</button>`;sh.appendChild(d);
+  d.innerHTML=`<span>Orang tua</span><button class="mini" id="lbYT">▶ YouTube Little Bhre</button><button class="mini" id="lbMB">🫧 Game Mandi Busa</button><button class="mini" id="lbKT">🚂 Game Kereta Tutu</button><button class="mini" id="lbPB">✈️ Game Pesawat Bhre</button>`;sh.appendChild(d);
   $("lbYT").onclick=()=>parentalGate(()=>{const w=window.open("https://www.youtube.com/@LittleBhre","_blank","noopener");if(!w)location.href="https://www.youtube.com/@LittleBhre"});
   $("lbMB").onclick=()=>parentalGate(()=>{location.href="/mandi-busa/"});
   $("lbKT").onclick=()=>parentalGate(()=>{location.href="/kereta-tutu/"});

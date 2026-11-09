@@ -139,6 +139,10 @@ section{padding-block:56px 40px}
 .game+.game{margin-top:26px}
 .game-art .pv{width:100%;margin-top:12px;border:3px solid var(--ink);border-radius:14px;background:#9fd27a;aspect-ratio:16/9;display:block}
 .new{display:inline-block;font:800 .85rem var(--body);background:#E5484D;color:#fff;border:2px solid var(--ink);border-radius:999px;padding:2px 12px;margin-bottom:10px;transform:rotate(-3deg)}
+.install{display:flex;gap:18px;align-items:flex-start;background:#E8F4FB;border:3px solid var(--ink);border-radius:24px;padding:20px;box-shadow:0 8px 0 rgba(122,58,16,.18)}
+.install .ic{font-size:2.6rem;line-height:1}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.how div{background:var(--page);border:2px solid var(--ink);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;font-size:.95rem}
+@media (max-width:760px){.how{grid-template-columns:1fr}.install{flex-direction:column}}
 @media (max-width:760px){.game{grid-template-columns:1fr}}
 
 /* promise */
@@ -287,6 +291,18 @@ footer small{display:block;width:100%;opacity:.7}
         <details><summary>Bagaimana memasang game di layar utama HP?</summary><p>Android: buka game di Chrome, lalu tekan tombol <b>📲 Pasang di HP</b> (atau menu ⋮ → <b>Instal aplikasi</b>). iPhone: buka di Safari, tekan tombol Bagikan → <b>Tambahkan ke Layar Utama</b>. Ikon game muncul seperti aplikasi dan tetap bisa dimainkan tanpa internet.</p></details>
         <details><summary>Saya ganti HP atau menghapus data browser</summary><p>Kode unlock terikat ke HP. Kirim bukti bayar lama ke WhatsApp kami, dan kami buatkan kode baru tanpa biaya.</p></details>
         <details><summary>Data apa yang dikumpulkan?</summary><p>Tidak ada. Game tidak memakai akun, iklan, atau pelacak. Pembayaran lewat QRIS dan percakapan WhatsApp hanya untuk mengirim kode.</p></details>
+      </div>
+    </div>
+  </div></section>
+  <section id="pasang"><div class="wrap">
+    <div class="install">
+      <div class="ic">📲</div>
+      <div>
+        <h3 class="sub" style="margin:0 0 6px">Pasang game di HP, main tanpa internet</h3>
+        <p style="margin:0 0 10px">Semua game Little Bhre bisa dipasang seperti aplikasi. Setelah dipasang, ikonnya muncul di layar utama dan tetap bisa dimainkan di jalan atau di pesawat, tanpa internet.</p>
+        <div class="how"><div><b>Android</b><span>Buka game di <b>Chrome</b> → tekan <b>📲 Pasang</b> di bawah layar menu (atau ⋮ → Instal aplikasi).</span></div>
+          <div><b>iPhone</b><span>Buka game di <b>Safari</b> → <b>Bagikan</b> → <b>Tambahkan ke Layar Utama</b>.</span></div>
+          <div><b>Dari WhatsApp?</b><span>Buka dulu di Chrome/Safari (⋮ → Buka di browser), baru pasang.</span></div></div>
       </div>
     </div>
   </div></section>
