@@ -22,6 +22,25 @@
 @font-face{font-family:Nunito;font-weight:600;font-display:swap;src:url(/assets/fonts/nunito-latin-600-normal.woff2) format("woff2")}
 @font-face{font-family:Nunito;font-weight:700;font-display:swap;src:url(/assets/fonts/nunito-latin-700-normal.woff2) format("woff2")}
 @font-face{font-family:Nunito;font-weight:800;font-display:swap;src:url(/assets/fonts/nunito-latin-800-normal.woff2) format("woff2")}
+
+/* game rack */
+.count{margin:0 0 12px;font-size:1rem}
+.rack{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.gc{display:flex;flex-direction:column;background:var(--page);border:3px solid var(--ink);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .15s}
+.gc:hover{transform:translateY(-4px) rotate(-.5deg)}
+.gc.feat{grid-column:1/-1}
+.gc-art{position:relative;aspect-ratio:16/9;background:var(--sun);border-bottom:3px solid var(--ink)}
+.gc-art img,.gc-art video{width:100%;height:100%;object-fit:cover;display:block}
+.play{position:absolute;right:10px;bottom:10px;width:44px;height:44px;border-radius:50%;background:var(--grass-deep);color:#fff;border:3px solid var(--ink);display:grid;place-items:center;font-size:18px}
+.gc-b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}
+.gc-b b{font:800 1.1rem/1.2 var(--display)}
+.gc.feat .gc-b b{font-size:1.4rem}
+.gc-b .sk{font-size:.9rem;color:var(--ink-soft)}
+.gc-b .fr{font:800 .85rem var(--body);color:var(--grass-deep)}
+.gc-b .new{align-self:flex-start}
+.prices{margin-top:16px}
+.prices .worlds{margin:10px 0 0}
+@media (min-width:900px){.rack{grid-template-columns:repeat(4,1fr)}.gc.feat{grid-column:span 2;grid-row:span 2}}
 </style>
 <style>
 /* Layout: a storybook — the yard key visual opens the book, then each section is a page with a hand-cut sticker heading; single warm daytime theme by choice (the channel's own look). */
@@ -213,70 +232,22 @@ footer small{display:block;width:100%;opacity:.7}
   <section id="main"><div class="wrap">
     <h2 class="sticker-h">Main</h2>
     <p class="lead">Game anak tanpa iklan, tanpa batas waktu, dan tanpa kata "kalah". Dimainkan langsung di browser, bisa dipasang di layar utama HP, lalu <b>dimainkan tanpa internet</b> (cocok untuk di jalan atau di pesawat).</p>
-    <div class="game">
-      <div class="game-art"><img class="hd" src="/assets/img/6e64c2ef.webp" alt="Bhre bertopi pesta tertawa"><img class="tt" src="/assets/img/75345f1c.webp" alt="Pesta Makan!"></div>
-      <div>
-        <p style="margin:0 0 14px">Seret makanan ke hewan yang memakannya. Ada 24 level, suara hewan asli, dan suara Bhre sendiri.</p>
-        <ul class="worlds">
-          <li class="free"><b>Kebun Pagi</b><em>Gratis</em><span>8 level, 2 sampai 4 hewan</span></li>
-          <li><b>Taman Pesta</b><em>Rp20.000</em><span>Senja dan topi pesta, tiap hewan mau dua makanan</span></li>
-          <li><b>Hutan Malam</b><em>Rp30.000</em><span>Tebak hewan dari bayangan dan suaranya</span></li>
-          <li class="best"><b>Taman Pesta + Hutan Malam</b><em>Rp25.000</em><span>Paling hemat, sekali bayar</span></li>
-        </ul>
-        <div class="btns">
-          <a class="btn go" href="/pesta-makan/">Coba gratis</a>
-          <a class="btn ghost" href="#orang-tua">Cara beli</a>
-        </div>
-      </div>
+    <p class="count"><b>4 game</b> · ketuk untuk main</p>
+    <div class="rack">
+      <a class="gc feat" href="/pesawat-bhre/"><div class="gc-art"><video src="/assets/img/pb_preview.mp4" poster="/assets/img/pb_preview.webp" muted loop playsinline preload="metadata" aria-label="Cuplikan Pesawat Bhre"></video><span class="play">▶</span></div><div class="gc-b"><span class="new">Baru</span><b>Pesawat Bhre</b><span class="sk">Berhitung balon 1–10</span><span class="fr">3 level gratis</span></div></a>
+      <a class="gc" href="/kereta-tutu/"><div class="gc-art"><img src="/assets/img/kt_preview.webp" alt="Cuplikan Kereta Tutu" loading="lazy" width="640" height="360"><span class="play">▶</span></div><div class="gc-b"><b>Kereta Tutu</b><span class="sk">Warna & angka 1–6</span><span class="fr">3 level gratis</span></div></a>
+      <a class="gc" href="/mandi-busa/"><div class="gc-art"><img src="/assets/img/mb_preview.webp" alt="Cuplikan Mandi Busa" loading="lazy" width="640" height="360"><span class="play">▶</span></div><div class="gc-b"><b>Mandi Busa</b><span class="sk">Berhitung 1–5</span><span class="fr">3 level gratis</span></div></a>
+      <a class="gc" href="/pesta-makan/"><div class="gc-art"><img src="/assets/img/pm_preview.webp" alt="Cuplikan Pesta Makan" loading="lazy" width="640" height="360"><span class="play">▶</span></div><div class="gc-b"><b>Pesta Makan</b><span class="sk">Hewan & makanannya</span><span class="fr">8 level gratis</span></div></a>
     </div>
-    <div class="game">
-      <div class="game-art"><img class="hd" src="/assets/img/mb_head.webp" alt="Bhre bermahkota busa dan bebek karet, tertawa"><img class="tt" src="/assets/img/mb_title.webp" alt="Mandi Busa!">
-        <video class="pv" src="/assets/img/mb_preview.mp4" poster="/assets/img/mb_preview.webp" autoplay muted loop playsinline preload="metadata" aria-label="Cuplikan permainan Mandi Busa"></video></div>
-      <div>
-        <span class="new">Baru</span>
-        <p style="margin:0 0 14px">Gosok lumpur, pecahkan gelembung, lalu bilas sampai berkilau. Bersihkan Bhre, Tutu, kereta, buah, bebek, sampai pesta busa di bak mandi. 10 level, sambil belajar berhitung 1 sampai 5.</p>
-        <ul class="worlds">
-          <li class="free"><b>Level 1–3</b><em>Gratis</em><span>Bhre, Tutu, dan kereta mainan</span></li>
-          <li class="best"><b>Level 4–10</b><em>Rp25.000</em><span>Buah, bebek, sepatu bot, pesawat, piring, perosotan, dan pesta busa. Sekali bayar</span></li>
-        </ul>
-        <div class="btns">
-          <a class="btn go" href="/mandi-busa/">Coba gratis</a>
-          <a class="btn ghost" href="#orang-tua">Cara beli</a>
-        </div>
-      </div>
-    </div>
-    <div class="game">
-      <div class="game-art"><img class="hd" src="/assets/img/kt_head.webp" alt="Bhre bertopi masinis tertawa"><img class="tt" src="/assets/img/kt_title.webp" alt="Kereta Tutu!">
-        <video class="pv" src="/assets/img/kt_preview.mp4" poster="/assets/img/kt_preview.webp" autoplay muted loop playsinline preload="metadata" aria-label="Cuplikan permainan Kereta Tutu"></video></div>
-      <div>
-        <span class="new">Baru</span>
-        <p style="margin:0 0 14px">Rangkai gerbong sesuai warna dan angka, isi muatan ke gerbong yang warnanya sama, lalu tekan peluit: TOOT TOOT! Belajar warna, urutan angka 1 sampai 6, dan berhitung.</p>
-        <ul class="worlds">
-          <li class="free"><b>Level 1–3</b><em>Gratis</em><span>Kereta 2 sampai 4 gerbong, warna</span></li>
-          <li class="best"><b>Level 4–10</b><em>Rp25.000</em><span>Sampai 6 gerbong, angka 1–6, kereta senja dan malam, parade bersama Bhre &amp; Tutu. Sekali bayar</span></li>
-        </ul>
-        <div class="btns">
-          <a class="btn go" href="/kereta-tutu/">Coba gratis</a>
-          <a class="btn ghost" href="#orang-tua">Cara beli</a>
-        </div>
-      </div>
-    </div>
-    <div class="game">
-      <div class="game-art"><img class="hd" src="/assets/img/pb_head.webp" alt="Bhre bertopi pilot tertawa"><img class="tt" src="/assets/img/pb_title.webp" alt="Pesawat Bhre!">
-        <video class="pv" src="/assets/img/pb_preview.mp4" poster="/assets/img/pb_preview.webp" autoplay muted loop playsinline preload="metadata" aria-label="Cuplikan permainan Pesawat Bhre"></video></div>
-      <div>
-        <span class="new">Baru</span>
-        <p style="margin:0 0 14px">Tahan layar untuk terbang, lepas untuk turun. Kumpulkan balon sambil berhitung, lalu mendarat dan berikan semua balon ke Tutu. Tidak ada kata kalah, pesawatnya tidak pernah jatuh.</p>
-        <ul class="worlds">
-          <li class="free"><b>Level 1–3</b><em>Gratis</em><span>Pagi dan senja, 3 sampai 5 balon</span></li>
-          <li class="best"><b>Level 4–10</b><em>Rp25.000</em><span>Awan hujan, kawanan burung, terbang malam mengumpulkan bintang, sampai 10 balon dan pelangi. Sekali bayar</span></li>
-        </ul>
-        <div class="btns">
-          <a class="btn go" href="/pesawat-bhre/">Coba gratis</a>
-          <a class="btn ghost" href="#orang-tua">Cara beli</a>
-        </div>
-      </div>
-    </div>
+    <details class="prices"><summary>Harga level lanjutan tiap game</summary>
+      <ul class="worlds">
+        <li><b>Pesawat Bhre</b><em>Rp25.000</em><span>Level 4–10: hujan, burung, terbang malam, sampai 10 balon</span></li>
+        <li><b>Kereta Tutu</b><em>Rp25.000</em><span>Level 4–10: sampai 6 gerbong, kereta senja dan malam</span></li>
+        <li><b>Mandi Busa</b><em>Rp25.000</em><span>Level 4–10: buah, bebek, sepatu bot, pesawat, pesta busa</span></li>
+        <li><b>Pesta Makan</b><em>Rp20.000–30.000</em><span>Taman Pesta Rp20.000, Hutan Malam Rp30.000, keduanya Rp25.000</span></li>
+      </ul>
+      <p style="margin:6px 0 0">Sekali bayar per game, tanpa langganan. <a href="#orang-tua">Cara beli</a></p>
+    </details>
   </div></section>
 
   <section id="janji"><div class="wrap">
@@ -338,5 +309,10 @@ document.getElementById("copyWa").addEventListener("click",async e=>{const b=e.c
 document.querySelectorAll(".age[data-born]").forEach(e=>{const b=new Date(e.dataset.born+"T00:00:00"),n=new Date();
   let m=(n.getFullYear()-b.getFullYear())*12+n.getMonth()-b.getMonth();if(n.getDate()<b.getDate())m--;
   const y=Math.floor(m/12),r=m%12;e.textContent=(y?y+" tahun":"")+(y&&r?" ":"")+(r||!y?r+" bulan":"")});
+</script>
+<script>
+(()=>{const v=document.querySelector(".gc.feat video");if(!v)return;
+ if(!("IntersectionObserver" in window)){v.play().catch(()=>{});return}
+ new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?v.play().catch(()=>{}):v.pause()),{threshold:.4}).observe(v)})();
 </script>
 </body></html>
