@@ -897,4 +897,107 @@ LBC.bhre.onclick=()=>{hop(LBC.bhre);play("bhre_laugh",.8)};LBC.tutu.onclick=()=>
   setTimeout(land,3500);addEventListener("resize",()=>{const s=spot();bd.style.left=s.x+"px";bd.style.top=s.y+"px"})})();
 </script><!--/LB-V2-->
 
+
+
+
+<!--lb-i18n--><script>/* Little Bhre games: English for visitors whose phone is not in Indonesian (or who chose EN on littlebhre.com).
+   Injected into every game by game-series/tools/make_pwa.py. Translates visible text and labels after the game
+   draws them; game logic, payment flow and the WhatsApp message to the seller stay unchanged.
+   New Indonesian text in a game -> add it to T (exact text) or R (pattern) below. */
+(() => {
+  let k = null; try { k = localStorage.getItem("lb_lang"); } catch (e) {}
+  const idPhone = (navigator.languages || [navigator.language || ""]).some((l) => /^(id|ms|jv|su)/i.test(l));
+  if (k === "id" || (!k && idPhone)) return;
+  const T = {
+    // worlds, levels, navigation
+    "Kebun Pagi": "Morning Garden", "Taman Pesta": "Party Garden", "Hutan Malam": "Night Forest", "Dua dunia": "Both worlds",
+    "Kebun": "Garden", "Taman": "Party", "Hutan": "Forest", "Dunia": "World", "Level": "Level", "Level 1": "Level 1",
+    "Pilih dunia": "Choose a world", "Pilih": "Choose", "Dunia berikutnya": "Next world", "Buka dunia berikutnya": "Unlock the next world",
+    "Dunia ini saja": "This world only", "Dunia selesai!": "World complete!", "Lanjut ke dunia berikutnya!": "On to the next world!",
+    "Semua dunia tamat!": "All worlds done!", "Luar biasa! Semua dunia tamat!": "Amazing! All worlds done!",
+    "Kembali": "Back", "Kembali ke pilih dunia": "Back to worlds", "Tutup": "Close", "Batal": "Cancel", "Buka": "Unlock",
+    "Ketuk untuk main": "Tap to play", "Ketuk untuk lewati": "Tap to skip", ". Ketuk untuk membuka": ". Tap to unlock", ": 8 level": ": 8 levels",
+    "Matikan suara": "Sound off", "Nyalakan suara": "Sound on", "Buka Level 4–10": "Unlock levels 4–10",
+    // Pesta Makan play text
+    "Beri makan hewan yang lapar": "Feed the hungry animals", "Seret makanan ke hewan yang lapar!": "Drag the food to the hungry animal!",
+    "Setiap hewan mau dua makanan": "Every animal wants two foods", "Setiap hewan mau dua makanan!": "Every animal wants two foods!",
+    "Dengarkan dan tebak siapa yang bersembunyi": "Listen and guess who is hiding", "Siapa yang bersembunyi? Ketuk bayangan untuk mendengar.": "Who is hiding? Tap a shadow to listen.",
+    "Hewan tersembunyi": "Hidden animal", "Sekarang ketuk hewannya": "Now tap the animal", "Bukan yang ini. Dengarkan lagi!": "Not that one. Listen again!",
+    ". Coba lagi!": ". Try again!", "tidak makan": "doesn't eat", "Hebat! Semua sudah kenyang!": "Great! Everyone is full!",
+    "Anjing": "Dog", "Ayam": "Chicken", "Bebek": "Duck", "Beruang": "Bear", "Burung": "Bird", "Burung Hantu": "Owl", "Domba": "Sheep",
+    "Gorila": "Gorilla", "Katak": "Frog", "Kelinci": "Rabbit", "Kucing": "Cat", "Sapi": "Cow",
+    "Cuit cuit!": "Tweet tweet!", "Embeek!": "Baa!", "Guk guk!": "Woof woof!", "Huu huu!": "Hoo hoo!", "Kwak kwak!": "Ribbit!", "Kwek kwek!": "Quack quack!",
+    "Meong!": "Meow!", "Nyam nyam!": "Yum yum!", "Petok petok!": "Cluck cluck!",
+    "biji bunga": "seeds", "buah beri": "berries", "cacing": "worm", "daging": "meat", "daun": "leaf", "daun semanggi": "clover", "ikan": "fish",
+    "jagung": "corn", "lalat": "fly", "madu": "honey", "nyamuk": "mosquito", "pisang": "banana", "rumput": "grass", "selada": "lettuce",
+    "siput": "snail", "susu": "milk", "tikus": "mouse", "tulang": "bone", "ulat": "caterpillar", "wortel": "carrot",
+    // parents, buying, codes
+    "Orang tua": "Grown-ups", "Untuk orang tua": "For grown-ups", "Khusus orang dewasa": "Grown-ups only",
+    "Ketuk angka berikut secara berurutan:": "Tap these numbers in order:", "Ketuk angka-angka ini secara berurutan:": "Tap these numbers in order:",
+    "Bayar": "Pay", "Bayar dengan QRIS": "Pay with QRIS (Indonesia only)", "Scan QRIS di atas, bayar": "Scan the QRIS above, pay",
+    "ke Titik Kumpul (DANA).": "to Titik Kumpul (DANA).", "<span>Gambar QRIS di sini</span>": "<span>QRIS image here</span>",
+    "Simpan gambar QRIS (tekan lama gambarnya), buka aplikasi pembayaranmu, pilih scan dari galeri, lalu bayar":
+      "Save the QRIS image (long-press it), open your payment app, scan from gallery, then pay",
+    "Kirim ke WhatsApp": "Send to WhatsApp", "di bawah, lalu lampirkan bukti bayarnya. Nomor penjual:": "below and attach your receipt. Seller's number:",
+    "(kode pesanan terisi otomatis).": "(order code is filled in for you).", "Kode pesanan": "Order code", "Kode perangkat": "Device code", "Kode unlock": "Unlock code",
+    "Saya sudah punya kode": "I already have a code", "Masukkan kode unlock": "Enter unlock code", "Tempel kode di sini": "Paste the code here",
+    "Tempel balasan WhatsApp (berisi kode unlock) di sini": "Paste the WhatsApp reply (with the unlock code) here",
+    "Tempel balasan kode buka di bawah, lalu tekan": "Paste the unlock reply below, then tap", "Tempel": "Paste", "Salin": "Copy",
+    "Salin pesan balasan penjual, lalu tempel di kolom bawah. Dunia langsung terbuka.": "Copy the seller's reply and paste it below. The world opens right away.",
+    "Tekan lama kolom kode, lalu pilih Tempel.": "Long-press the code box, then choose Paste.",
+    "Kode belum cocok. Cek lagi balasan dari WhatsApp.": "That code doesn't match. Check the WhatsApp reply again.",
+    "Kode tidak cocok dengan perangkat ini. Periksa hurufnya lalu coba lagi.": "This code is not for this device. Check the letters and try again.",
+    "Link unlock ini untuk HP lain. Minta penjual mengirim ulang kodenya.": "This unlock link is for another phone. Ask the seller to resend the code.",
+    "sudah terbuka!": "is unlocked!", "Taman Pesta + Hutan Malam, paling hemat": "Party Garden + Night Forest, best value",
+    "Sekali bayar. Tanpa iklan, tanpa mengumpulkan data, bisa dimainkan tanpa internet": "Pay once. No ads, no data collected, plays offline",
+    "sekali bayar · tanpa iklan · tanpa data pribadi · bisa dimainkan tanpa internet": "pay once · no ads · no personal data · plays offline",
+    "7 level baru: buah, bebek, sepatu bot, pesawat, piring, perosotan dan pesta busa.": "7 new levels: fruit, a duck, boots, a plane, plates, a slide and a bubble party.",
+    "7 level baru: awan hujan, kawanan burung, terbang senja dan malam mengumpulkan bintang, sampai 10 balon dan pelangi.":
+      "7 new levels: rain clouds, flocks of birds, sunset and night flights collecting stars, up to 10 balloons and a rainbow.",
+    // install
+    "Pasang": "Install", "📲 Pasang di HP": "📲 Install", "· main tanpa internet": "· play offline", "Pasang di HP": "Install on phone", "Pasang di iPhone": "Install on iPhone", "📲 Pasang": "📲 Install",
+    "Ikon game muncul seperti aplikasi dan bisa dimainkan tanpa internet.": "The game icon appears like an app and plays without internet.",
+    "Bagikan": "Share", "Tambahkan ke Layar Utama": "Add to Home Screen", "Tambahkan ke layar utama": "Add to Home Screen",
+    "Ketuk tombol": "Tap the", "Ketuk": "Tap", "di bawah layar.": "button at the bottom of the screen.", "di pojok kanan atas.": "in the top-right corner.",
+    ") di pojok kanan atas.": ") in the top-right corner.", "Di sana, tekan lagi": "There, tap again",
+    "Buka di Chrome": "Open in Chrome", "Buka di Safari": "Open in Safari", "Buka di browser": "Open in browser", "Buka di browser dulu": "Open in a browser first",
+    "Buka halaman ini di": "Open this page in", "Salin link game": "Copy game link",
+    "Game ini sedang dibuka di dalam WhatsApp/Instagram, jadi belum bisa dipasang.": "This game is open inside WhatsApp/Instagram, so it can't be installed yet.",
+    "Kartun tanpa kata untuk anak 2–5 tahun.": "Wordless cartoons for kids aged 2–5.", "▶ Buka YouTube @LittleBhre": "▶ Open YouTube @LittleBhre",
+  };
+  const NUM = { nol: "zero", satu: "one", dua: "two", tiga: "three", empat: "four", lima: "five", enam: "six", tujuh: "seven", delapan: "eight", sembilan: "nine" };
+  const R = [
+    [/^(Kebun|Taman|Hutan) (\d+\/\d+)$/, (m, w, n) => T[w] + " " + n],
+    [/^Dunia (.+) sudah terbuka!$/, (m, w) => (T[w] || w) + " is unlocked!"],
+    [/^(nol|satu|dua|tiga|empat|lima|enam|tujuh|delapan|sembilan)((?:[ ,]+(?:nol|satu|dua|tiga|empat|lima|enam|tujuh|delapan|sembilan))*)$/,
+      (m) => m.replace(/[a-z]+/g, (w) => NUM[w] || w)],
+    [/^(.+)\. Ketuk untuk membuka$/, (m, a) => (T[a] || a) + ". Tap to unlock"],
+    [/^(.+) tidak makan (.+)$/, (m, a, f) => (T[a] || a) + " doesn't eat " + (T[f] || f)],
+  ];
+  const tr = (s) => {
+    const t = s.trim(); if (!t || !/[a-z]/i.test(t)) return null;
+    let o = T[t];
+    if (o === undefined) for (const [re, f] of R) { if (re.test(t)) { o = t.replace(re, f); break; } }
+    return o === undefined || o === t ? null : s.replace(t, o);
+  };
+  const ATTR = ["placeholder", "aria-label", "title", "alt"];
+  const fix = (root) => {
+    if (root.nodeType === 3) { const o = tr(root.nodeValue); if (o !== null) root.nodeValue = o; return; }
+    if (root.nodeType !== 1 || /^(SCRIPT|STYLE|TEXTAREA)$/.test(root.nodeName)) return;
+    for (const a of ATTR) { const v = root.getAttribute && root.getAttribute(a); if (v) { const o = tr(v); if (o !== null) root.setAttribute(a, o); } }
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+    for (let n = w.nextNode(); n; n = w.nextNode()) {
+      if (n.nodeType === 3) { const p = n.parentNode; if (p && /^(SCRIPT|STYLE|TEXTAREA)$/.test(p.nodeName)) continue; const o = tr(n.nodeValue); if (o !== null) n.nodeValue = o; }
+      else for (const a of ATTR) { const v = n.getAttribute(a); if (v) { const o = tr(v); if (o !== null) n.setAttribute(a, o); } }
+    }
+  };
+  const start = () => {
+    document.documentElement.lang = "en";
+    fix(document.body);
+    new MutationObserver((ms) => { for (const m of ms) { if (m.type === "characterData") fix(m.target); else m.addedNodes.forEach(fix); if (m.type === "attributes") fix(m.target); } })
+      .observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTR });
+  };
+  if (document.body) start(); else document.addEventListener("DOMContentLoaded", start);
+})();
+</script><!--/lb-i18n-->
 </body></html>

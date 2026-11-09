@@ -12,6 +12,13 @@
 <meta property="og:url" content="https://littlebhre.com/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#FFF6E2">
+<link rel="alternate" hreflang="id" href="https://littlebhre.com/">
+<link rel="alternate" hreflang="en" href="https://littlebhre.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://littlebhre.com/en/">
+<script>/* bahasa: pilihan tersimpan > bahasa HP; non-Indonesia ke /en/ */
+(()=>{let k=null;try{k=localStorage.getItem("lb_lang")}catch(e){}
+ const id=(navigator.languages||[navigator.language||""]).some(l=>/^(id|ms|jv|su)/i.test(l));
+ if(k==="en"||(!k&&!id))location.replace("/en/"+location.hash)})();</script>
 <link rel="icon" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/assets/img/78f86405.webp" as="image" media="(min-width:641px)">
@@ -182,6 +189,7 @@ footer button{font:800 .9rem var(--body);background:var(--lime);color:var(--ink)
 footer .links{display:flex;gap:16px;flex-wrap:wrap}
 footer .links a{color:var(--paper);font-weight:800}
 footer small{display:block;width:100%;opacity:.7}
+nav a.lang{border:3px solid var(--ink);background:var(--page);padding:5px 12px;margin-left:4px}
 </style>
 </head>
 <body>
@@ -193,6 +201,7 @@ footer small{display:block;width:100%;opacity:.7}
       <a href="#main">Main</a>
       <a class="hide-s" href="#tentang">Tentang</a>
       <a href="#orang-tua">Orang tua</a>
+      <a class="lang" href="/en/" hreflang="en" lang="en" data-lang="en" aria-label="English">EN</a>
     </nav>
   </div>
 </header>
@@ -330,5 +339,8 @@ document.querySelectorAll(".age[data-born]").forEach(e=>{const b=new Date(e.data
 (()=>{const v=document.querySelector(".gc.feat video");if(!v)return;
  if(!("IntersectionObserver" in window)){v.play().catch(()=>{});return}
  new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?v.play().catch(()=>{}):v.pause()),{threshold:.4}).observe(v)})();
+</script>
+<script>
+document.querySelectorAll("a[data-lang]").forEach(a=>a.addEventListener("click",()=>{try{localStorage.setItem("lb_lang",a.dataset.lang)}catch(e){}}));
 </script>
 </body></html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Little Bhre: wordless cartoons and games for kids 2–5</title>
+<meta name="description" content="Made by Mum and Dad for Bhre, shared with your child. Wordless animation and ad-free games for kids aged 2–5.">
+<link rel="canonical" href="https://littlebhre.com/en/">
+<meta property="og:title" content="Little Bhre">
+<meta property="og:description" content="Made by Mum and Dad for Bhre. Shared with your child.">
+<meta property="og:image" content="https://littlebhre.com/assets/og.jpg">
+<meta property="og:url" content="https://littlebhre.com/en/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFF6E2">
+<link rel="alternate" hreflang="id" href="https://littlebhre.com/">
+<link rel="alternate" hreflang="en" href="https://littlebhre.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://littlebhre.com/en/">
+<script>/* bahasa: pilihan tersimpan > bahasa HP; non-Indonesia ke /en/ */
+(()=>{let k=null;try{k=localStorage.getItem("lb_lang")}catch(e){}
+ const id=(navigator.languages||[navigator.language||""]).some(l=>/^(id|ms|jv|su)/i.test(l));
+ if(k==="id")location.replace("/"+location.hash)})();</script>
+<link rel="icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/img/78f86405.webp" as="image" media="(min-width:641px)">
+<link rel="preload" href="/assets/img/39d2de30.webp" as="image" media="(max-width:640px)">
+<style>
+@font-face{font-family:Poppins;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Poppins;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:600;font-display:swap;src:url(/assets/fonts/nunito-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:700;font-display:swap;src:url(/assets/fonts/nunito-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:800;font-display:swap;src:url(/assets/fonts/nunito-latin-800-normal.woff2) format("woff2")}
+
+/* game rack */
+.count{margin:0 0 12px;font-size:1rem}
+.rack{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+.gc{display:flex;flex-direction:column;background:var(--page);border:3px solid var(--ink);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .15s}
+.gc:hover{transform:translateY(-4px) rotate(-.5deg)}
+.gc.feat{grid-column:1/-1}
+.gc-art{position:relative;aspect-ratio:16/9;background:var(--sun);border-bottom:3px solid var(--ink)}
+.gc-art img,.gc-art video{width:100%;height:100%;object-fit:cover;display:block}
+.play{position:absolute;right:10px;bottom:10px;width:44px;height:44px;border-radius:50%;background:var(--grass-deep);color:#fff;border:3px solid var(--ink);display:grid;place-items:center;font-size:18px}
+.gc-b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}
+.gc-b b{font:800 1.1rem/1.2 var(--display)}
+.gc.feat .gc-b b{font-size:1.4rem}
+.gc-b .sk{font-size:.9rem;color:var(--ink-soft)}
+.gc-b .fr{font:800 .85rem var(--body);color:var(--grass-deep)}
+.gc-b .new{align-self:flex-start}
+.prices{margin-top:16px}
+.prices .worlds{margin:10px 0 0}
+@media (min-width:900px){.rack{grid-template-columns:repeat(4,1fr)}.gc.feat{grid-column:span 2;grid-row:span 2}}
+</style>
+<style>
+/* Layout: a storybook — the yard key visual opens the book, then each section is a page with a hand-cut sticker heading; single warm daytime theme by choice (the channel's own look). */
+:root{
+  --paper:#FFF6E2; --page:#FFFBF2; --sun:#F6A23C; --sun-deep:#E8692E; --ink:#2A1A12; --ink-soft:#6B4A36;
+  --grass:#8FCB63; --grass-deep:#2E7D3E; --lime:#D4DD1E; --navy:#3D5A8C; --blush:#EE7F6E; --sky:#BFE6FA;
+  --display:"Poppins","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Trebuchet MS",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font:600 17px/1.6 var(--body);
+  background-image:radial-gradient(#e9d9b6 1px,transparent 1.2px);background-size:18px 18px}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:3px solid var(--navy);outline-offset:3px;border-radius:6px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:3px solid var(--ink)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--paper)}
+header .wrap{display:flex;align-items:center;gap:14px;padding-block:8px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.25rem var(--display);color:var(--sun-deep);
+  -webkit-text-stroke:1.5px var(--ink);paint-order:stroke fill;white-space:nowrap}
+.brand img{width:44px;height:44px;border-radius:12px;border:3px solid var(--ink)}
+nav{margin-left:auto;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav a{font:800 .95rem var(--body);text-decoration:none;padding:8px 12px;border-radius:999px;white-space:nowrap}
+nav a:hover{background:#FFE7A8}
+@media (max-width:640px){nav a.hide-s{display:none}.brand span{display:none}}
+
+/* hero: the yard, two doors */
+.hero{position:relative;border-bottom:3px solid var(--ink);background:var(--grass)}
+.hero picture,.hero img{width:100%;height:auto}
+.door{position:absolute;transform:translate(-50%,-50%) rotate(var(--r,-4deg));display:inline-flex;align-items:center;gap:8px;
+  font:800 clamp(1rem,2.4vw,1.6rem) var(--display);text-decoration:none;color:var(--ink);background:var(--page);
+  border:3px solid var(--ink);border-radius:14px;padding:.35em .8em;box-shadow:0 0 0 5px #fff,0 8px 0 5px rgba(122,58,16,.35);
+  transition:transform .15s}
+.door:hover{transform:translate(-50%,-55%) rotate(var(--r,-4deg)) scale(1.06)}
+.door .ic{width:1.3em;height:1.3em;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.7em}
+.door.watch{left:19.6%;top:52%;--r:-5deg}.door.watch .ic{background:#E5484D}
+.door.play{left:53.6%;top:74%;--r:4deg}.door.play .ic{background:var(--grass-deep)}
+@media (max-width:640px){.door.watch{left:22%;top:50%}.door.play{left:56%;top:76%}}
+.tagline{background:var(--sun);border-bottom:3px solid var(--ink);
+  background-image:repeating-conic-gradient(from 0deg at 50% 120%,#FFE7A855 0deg 7deg,transparent 7deg 15deg)}
+.tagline .wrap{padding-block:22px;text-align:center}
+.tagline p{margin:0;font:800 clamp(1.25rem,3.6vw,2rem)/1.25 var(--display);text-wrap:balance}
+.tagline p span{display:block;color:var(--page);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill}
+
+/* pages */
+section{padding-block:56px 40px}
+.sticker-h{display:inline-block;margin:0 0 20px;font:800 clamp(1.5rem,4vw,2.2rem)/1.1 var(--display);background:var(--page);
+  border:3px solid var(--ink);border-radius:10px;padding:.2em .6em;transform:rotate(-2deg);box-shadow:0 0 0 5px #fff,0 6px 0 5px rgba(122,58,16,.25)}
+.sticker-h.alt{transform:rotate(1.5deg)}
+.lead{max-width:62ch;margin:0 0 24px;color:var(--ink-soft);font-size:1.05rem}
+
+/* story */
+.story{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center}
+.story-text p{margin:0 0 14px;max-width:58ch}
+.sig{font:800 1.1rem var(--display);color:var(--sun-deep)}
+.story-art{display:flex;align-items:flex-end;justify-content:center;gap:8px;background:var(--sky);border:3px solid var(--ink);border-radius:20px;
+  padding:24px 16px 0;background-image:linear-gradient(transparent 72%,var(--grass) 72%)}
+.story-art img{width:46%}
+@media (max-width:760px){.story{grid-template-columns:1fr}}
+
+/* watch */
+.eps{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.ep{background:var(--page);border:3px solid var(--ink);border-radius:16px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .15s}
+.ep:hover{transform:translateY(-4px) rotate(-.6deg)}
+.ep img{aspect-ratio:16/9;width:100%;object-fit:cover;border-bottom:3px solid var(--ink)}
+.ep div{padding:10px 14px 14px;display:flex;flex-direction:column;gap:2px}
+.ep small{font:800 .78rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--sun-deep)}
+.ep b{font:700 1.02rem/1.3 var(--display)}
+.ep span{font-size:.92rem;color:var(--ink-soft)}
+.more{display:inline-flex;margin-top:20px;font:800 1rem var(--body);background:#E5484D;color:#fff;border:3px solid var(--ink);border-radius:999px;padding:10px 20px;text-decoration:none}
+
+/* play */
+.game{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:center;background:var(--page);border:3px solid var(--ink);
+  border-radius:24px;padding:24px;box-shadow:0 10px 0 rgba(122,58,16,.18)}
+.game-art{position:relative;background:var(--sun);border:3px solid var(--ink);border-radius:18px;padding:18px 18px 10px;
+  background-image:repeating-conic-gradient(from 0deg at 50% 45%,#FFE7A8aa 0deg 7deg,transparent 7deg 15deg);display:flex;flex-direction:column;align-items:center}
+.game-art .hd{width:62%}
+.game-art .tt{width:88%;margin-top:-10%}
+.worlds{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px}
+.worlds li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:baseline;padding:10px 14px;border-radius:12px;background:var(--paper)}
+.worlds b{font:700 1.02rem var(--display)}
+.worlds em{font-style:normal;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.worlds li.free em{color:var(--grass-deep)}
+.worlds li.best{background:#FFE3E8}
+.worlds span{grid-column:1/-1;font-size:.92rem;color:var(--ink-soft)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{font:800 1.05rem var(--body);text-decoration:none;border:3px solid var(--ink);border-radius:999px;padding:11px 22px;display:inline-flex}
+.btn.go{background:var(--grass-deep);color:#fff;box-shadow:0 5px 0 var(--ink)}
+.btn.ghost{background:var(--page)}
+.game+.game{margin-top:26px}
+.game-art .pv{width:100%;margin-top:12px;border:3px solid var(--ink);border-radius:14px;background:#9fd27a;aspect-ratio:16/9;display:block}
+.new{display:inline-block;font:800 .85rem var(--body);background:#E5484D;color:#fff;border:2px solid var(--ink);border-radius:999px;padding:2px 12px;margin-bottom:10px;transform:rotate(-3deg)}
+.install{display:flex;gap:18px;align-items:flex-start;background:#E8F4FB;border:3px solid var(--ink);border-radius:24px;padding:20px;box-shadow:0 8px 0 rgba(122,58,16,.18)}
+.install .ic{font-size:2.6rem;line-height:1}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.how div{background:var(--page);border:2px solid var(--ink);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;font-size:.95rem}
+@media (max-width:760px){.how{grid-template-columns:1fr}.install{flex-direction:column}}
+@media (max-width:760px){.game{grid-template-columns:1fr}}
+
+/* promise */
+.promises{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pr{padding:18px;border-top:6px solid var(--c);background:var(--page);border-radius:4px 4px 16px 16px}
+.pr b{display:block;font:700 1.1rem var(--display);margin-bottom:4px}
+.pr p{margin:0;font-size:.95rem;color:var(--ink-soft)}
+@media (max-width:860px){.promises{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:460px){.promises{grid-template-columns:1fr}}
+
+/* meet */
+.meet{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.who{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center;background:var(--page);border:3px solid var(--ink);border-radius:20px;padding:16px}
+.who img{width:100%}
+.who h3{margin:0 0 6px;font:800 1.5rem var(--display)}
+.who ul{margin:0;padding-left:1.1em;color:var(--ink-soft);font-size:.95rem}
+@media (max-width:760px){.meet{grid-template-columns:1fr}}
+@media (max-width:420px){.who{grid-template-columns:96px 1fr}}
+
+/* parents */
+.parents{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:10px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start}
+.steps li::before{content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--sun);border:3px solid var(--ink);display:grid;place-items:center;font:800 1rem var(--display)}
+details{background:var(--page);border:3px solid var(--ink);border-radius:14px;padding:12px 16px;margin-bottom:10px}
+summary{font:800 1rem var(--body);cursor:pointer}
+details p{margin:8px 0 0;color:var(--ink-soft);font-size:.95rem}
+@media (max-width:760px){.parents{grid-template-columns:1fr}}
+h3.sub{font:800 1.2rem var(--display);margin:0 0 12px}
+
+/* footer */
+footer{background:var(--ink);color:var(--paper);margin-top:40px}
+footer .wrap{padding-block:32px;display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}
+footer .wa{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+footer .num{font:800 1.2rem var(--display);user-select:all;letter-spacing:.02em}
+footer button{font:800 .9rem var(--body);background:var(--lime);color:var(--ink);border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+footer .links{display:flex;gap:16px;flex-wrap:wrap}
+footer .links a{color:var(--paper);font-weight:800}
+footer small{display:block;width:100%;opacity:.7}
+nav a.lang{border:3px solid var(--ink);background:var(--page);padding:5px 12px;margin-left:4px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="/assets/img/2ba842e4.webp" alt=""><span>Little Bhre</span></a>
+    <nav aria-label="Menu">
+      <a href="#tonton">Watch</a>
+      <a href="#main">Play</a>
+      <a class="hide-s" href="#tentang">About</a>
+      <a href="#orang-tua">Parents</a>
+      <a class="lang" href="/" hreflang="id" lang="id" data-lang="id" aria-label="Bahasa Indonesia">ID</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <picture>
+      <source media="(max-width:640px)" srcset="/assets/img/39d2de30.webp">
+      <img src="/assets/img/78f86405.webp" alt="Morning in Bhre's yard: Bhre waves, Tutu the baby elephant sprays water, a little TV on a bench, a picnic mat full of food, a toy train on its track and a toy plane in the sky." width="1600" height="900">
+    </picture>
+    <a class="door watch" href="#tonton"><span class="ic">▶</span>Watch</a>
+    <a class="door play" href="#main"><span class="ic">●</span>Play</a>
+  </div>
+
+  <div class="tagline"><div class="wrap"><p>Made by Mum and Dad for Bhre. <span>Shared with your child.</span></p></div></div>
+
+  <section id="tentang"><div class="wrap story">
+    <div class="story-text">
+      <h2 class="sticker-h">Our story</h2>
+      <p>Bhre is <span class="age" data-born="2024-04-19">2 years 6 months</span> old. He loves watching and playing, like any child his age.</p>
+      <p>We wanted the best shows and games for him: ones that teach something, are safe to copy, and have no ads. So we made them ourselves.</p>
+      <p>That is how the Little Bhre cartoon series and our games for little ones began. We show everything to Bhre first. If he gets it right away and laughs, we share it.</p>
+      <p class="sig">Bhre's Mum &amp; Dad</p>
+    </div>
+    <div class="story-art"><img src="/assets/img/f233f52d.webp" alt="Bhre waving"><img src="/assets/img/1e8a3838.webp" alt="Tutu the baby elephant"></div>
+  </div></section>
+
+  <section id="tonton"><div class="wrap">
+    <h2 class="sticker-h alt">Watch</h2>
+    <p class="lead">Wordless animation, so children enjoy it in any language and without reading. New episodes every week on YouTube.</p>
+    <div class="eps">
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/b482a9e2.webp" alt="" loading="lazy"><div><small>Episode 1</small><b>The Runaway Train</b><span>Bhre's toy train rolls off on its own</span></div></a>
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/e66107a1.webp" alt="" loading="lazy"><div><small>Episode 2</small><b>The Plane in the Tree</b><span>A toy plane gets stuck in a tree</span></div></a>
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/efaaf695.webp" alt="" loading="lazy"><div><small>Episode 3</small><b>Hide and Seek with Tutu</b><span>Playing hide and seek with Tutu</span></div></a>
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/8c132d86.webp" alt="" loading="lazy"><div><small>Episode 4</small><b>Bubble Bath with Tutu</b><span>Bath time with Tutu</span></div></a>
+      <a class="ep" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener"><img src="/assets/img/aa421051.webp" alt="" loading="lazy"><div><small>Episode 5</small><b>Tutu Tries On Shoes</b><span>Tutu tries on shoes</span></div></a>
+    </div>
+    <a class="more" href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener">Open the Little Bhre channel on YouTube</a>
+  </div></section>
+
+  <section id="main"><div class="wrap">
+    <h2 class="sticker-h">Play</h2>
+    <p class="lead">Kids' games with no ads, no timers and no "game over". They run in the browser, can be added to your phone's home screen and then <b>played offline</b> (great for car rides and flights).</p>
+    <p class="count"><b>4 games</b> · tap to play</p>
+    <div class="rack">
+      <a class="gc feat" href="/pesawat-bhre/"><div class="gc-art"><video src="/assets/img/pb_preview.mp4" poster="/assets/img/pb_preview.webp" muted loop playsinline preload="metadata" aria-label="Pesawat Bhre gameplay"></video><span class="play">▶</span></div><div class="gc-b"><span class="new">New</span><b>Pesawat Bhre</b><span class="sk">Count balloons 1–10</span><span class="fr">3 free levels</span></div></a>
+      <a class="gc" href="/kereta-tutu/"><div class="gc-art"><img src="/assets/img/kt_preview.webp" alt="Kereta Tutu gameplay" loading="lazy" width="640" height="360"><span class="play">▶</span></div><div class="gc-b"><b>Kereta Tutu</b><span class="sk">Colours & numbers 1–6</span><span class="fr">3 free levels</span></div></a>
+      <a class="gc" href="/mandi-busa/"><div class="gc-art"><img src="/assets/img/mb_preview.webp" alt="Mandi Busa gameplay" loading="lazy" width="640" height="360"><span class="play">▶</span></div><div class="gc-b"><b>Mandi Busa</b><span class="sk">Counting 1–5</span><span class="fr">3 free levels</span></div></a>
+      <a class="gc" href="/pesta-makan/"><div class="gc-art"><img src="/assets/img/pm_preview.webp" alt="Pesta Makan gameplay" loading="lazy" width="640" height="360"><span class="play">▶</span></div><div class="gc-b"><b>Pesta Makan</b><span class="sk">Animals & their food</span><span class="fr">8 free levels</span></div></a>
+    </div>
+    <details class="prices"><summary>Prices for extra levels</summary>
+      <ul class="worlds">
+        <li><b>Pesawat Bhre</b><em>Rp25.000</em><span>Levels 4–10: rain, birds, night flights, up to 10 balloons</span></li>
+        <li><b>Kereta Tutu</b><em>Rp25.000</em><span>Levels 4–10: up to 6 wagons, sunset and night trains</span></li>
+        <li><b>Mandi Busa</b><em>Rp25.000</em><span>Levels 4–10: fruit, ducks, boots, a plane, a bubble party</span></li>
+        <li><b>Pesta Makan</b><em>Rp20.000–30.000</em><span>Party Garden Rp20,000, Night Forest Rp30,000, both Rp25,000</span></li>
+      </ul>
+      <p style="margin:6px 0 0">One-time payment per game, no subscription. For now extra levels can only be paid with Indonesian QRIS (Rp = Indonesian rupiah). <a href="#orang-tua">How to buy</a></p>
+    </details>
+  </div></section>
+
+  <section id="janji"><div class="wrap">
+    <h2 class="sticker-h alt">Our promise to parents</h2>
+    <div class="promises">
+      <div class="pr" style="--c:#E5484D"><b>No ads</b><p>No ads in our games, and the channel is marked as made for kids.</p></div>
+      <div class="pr" style="--c:var(--sun)"><b>No child data</b><p>No accounts and no trackers. Progress stays on your phone.</p></div>
+      <div class="pr" style="--c:var(--grass-deep)"><b>For ages 2–5</b><p>Wordless, short, and nobody ever loses.</p></div>
+      <div class="pr" style="--c:var(--navy)"><b>Tested on Bhre first</b><p>We only release what Bhre understands right away.</p></div>
+    </div>
+  </div></section>
+
+  <section id="kenalan"><div class="wrap">
+    <h2 class="sticker-h">Meet the family</h2>
+    <div class="meet">
+      <div class="who"><img src="/assets/img/f233f52d.webp" alt=""><div><h3>Bhre</h3><ul><li><span class="age" data-born="2024-04-19">2 years 6 months</span></li><li>Curly hair that always springs up</li><li>Loves toy trains and planes</li></ul></div></div>
+      <div class="who"><img src="/assets/img/1e8a3838.webp" alt=""><div><h3>Tutu</h3><ul><li>A baby elephant, Bhre's best friend</li><li>Bhre picked his name himself</li><li>Loves spraying water from his trunk</li></ul></div></div>
+      <div class="who"><img src="/assets/img/trah.webp" alt="Trah, Bhre's little brother, waving"><div><h3>Trah</h3><ul><li>Bhre's little brother, <span class="age" data-born="2026-04-15">6 months</span></li><li>Fine hair with one little curl, just like his big brother</li><li>Appears in our Baby Sensory videos</li></ul></div></div>
+    </div>
+  </div></section>
+
+  <section id="orang-tua"><div class="wrap">
+    <h2 class="sticker-h alt">For parents</h2>
+    <div class="parents">
+      <div>
+        <h3 class="sub">How to buy extra levels</h3>
+        <ol class="steps">
+          <li>Play the free part until your child loves it (Morning Garden in Pesta Makan, levels 1–3 in Mandi Busa, Kereta Tutu and Pesawat Bhre).</li>
+          <li>Tap a locked world or level and answer the grown-ups-only question.</li>
+          <li>Pay with QRIS (Indonesian payment only for now), then tap Send to WhatsApp and attach the receipt.</li>
+          <li>We reply with an unlock code.</li>
+          <li>Copy our reply into the game, or tap the link in it. Everything opens right away.</li>
+        </ol>
+      </div>
+      <div>
+        <h3 class="sub">Frequently asked questions</h3>
+        <details><summary>How do I add a game to my home screen?</summary><p>Android: open the game in Chrome and tap <b>📲 Install</b> (or menu ⋮ → <b>Install app</b>). iPhone: open it in Safari, tap Share → <b>Add to Home Screen</b>. The game icon appears like an app and works without internet.</p></details>
+        <details><summary>I changed phones or cleared my browser data</summary><p>Unlock codes are tied to one phone. Send your old receipt to our WhatsApp and we will make a new code for free.</p></details>
+        <details><summary>What data do you collect?</summary><p>None from the games: no accounts, ads or trackers. The QRIS payment and WhatsApp chat are only used to send your code.</p></details>
+      </div>
+    </div>
+  </div></section>
+  <section id="pasang"><div class="wrap">
+    <div class="install">
+      <div class="ic">📲</div>
+      <div>
+        <h3 class="sub" style="margin:0 0 6px">Install the games, play offline</h3>
+        <p style="margin:0 0 10px">Every Little Bhre game can be installed like an app. Once installed, its icon sits on your home screen and it plays in the car or on a plane, without internet.</p>
+        <div class="how"><div><b>Android</b><span>Open the game in <b>Chrome</b> → tap <b>📲 Install</b> under the menu screen (or ⋮ → Install app).</span></div>
+          <div><b>iPhone</b><span>Open the game in <b>Safari</b> → <b>Share</b> → <b>Add to Home Screen</b>.</span></div>
+          <div><b>From WhatsApp?</b><span>Open it in Chrome/Safari first (⋮ → Open in browser), then install.</span></div></div>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="wa"><span>WhatsApp</span><span class="num" id="wa">0815-9528-958</span><button id="copyWa" type="button">Copy number</button></div>
+  <div class="links"><a href="https://www.youtube.com/@LittleBhre" target="_blank" rel="noopener">YouTube</a><a href="#orang-tua">How to buy</a><a href="/en/privacy/">Privacy policy</a></div>
+  <small>© 2026 Little Bhre. Made with love at Bhre's home in Indonesia.</small>
+</div></footer>
+
+<script>
+document.getElementById("copyWa").addEventListener("click",async e=>{const b=e.currentTarget;
+  try{await navigator.clipboard.writeText("08159528958");b.textContent="Copied"}
+  catch(_){const r=document.createRange();r.selectNodeContents(document.getElementById("wa"));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="Number selected"}
+  setTimeout(()=>b.textContent="Copy number",1600)});
+</script>
+
+<script>
+document.querySelectorAll(".age[data-born]").forEach(e=>{const b=new Date(e.dataset.born+"T00:00:00"),n=new Date();
+  let m=(n.getFullYear()-b.getFullYear())*12+n.getMonth()-b.getMonth();if(n.getDate()<b.getDate())m--;
+  const y=Math.floor(m/12),r=m%12;e.textContent=(y?y+(y>1?" years":" year"):"")+(y&&r?" ":"")+(r||!y?r+(r===1?" month":" months"):"")});
+</script>
+<script>
+(()=>{const v=document.querySelector(".gc.feat video");if(!v)return;
+ if(!("IntersectionObserver" in window)){v.play().catch(()=>{});return}
+ new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?v.play().catch(()=>{}):v.pause()),{threshold:.4}).observe(v)})();
+</script>
+<script>
+document.querySelectorAll("a[data-lang]").forEach(a=>a.addEventListener("click",()=>{try{localStorage.setItem("lb_lang",a.dataset.lang)}catch(e){}}));
+</script>
+</body></html>
